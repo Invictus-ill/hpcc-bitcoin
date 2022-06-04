@@ -6,6 +6,7 @@ BitcoinTxRaw := $.File_Bitcoin.File;
 OutputLayout := RECORD
     STRING tx_hash;
     STRING in_addr;
+    INTEGER in_val;
     STRING out_addr;
     INTEGER out_val;
     STRING timestamp;
@@ -15,6 +16,7 @@ Layout := $.File_Bitcoin.Layout;
 
 OutputLayout JoinThem(Layout L, Layout R) := TRANSFORM
     SELF.in_addr := R.out_addr;
+    SELF.in_val := R.out_val;
     SELF.tx_hash := L.tx_hash;
     SELF.out_addr := L.out_addr;
     SELF.out_val := L.out_val;
